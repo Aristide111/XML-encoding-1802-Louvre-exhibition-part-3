@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <listPlace>
+     
+     <place xml:id="Bol_001">
+         <placeName>Bologna</placeName>
+         <location>
+            <geo>44°29'38"N, 11°20'34"E</geo>
+         </location>
+         <idno type="wikidata">Q665760</idno>
+     </place>
+     
+     <place xml:id="Cen_001">
+         <placeName>Cento</placeName>
+         <location>
+            <geo>44°29'38"N, 11°20'34"E</geo>
+         </location>
+         <idno type="wikidata">44°44'0"N, 11°17'0"E</idno>
+     </place>
+     
+     <place xml:id="Fol_001">
+         <placeName>Foligno</placeName>
+         <location>
+            <geo>42.950001 12.700000.</geo>
+         </location>
+         <idno type="wikidata">Q20436</idno>
+     </place>
+     
+     <place xml:id="Flo_001">
+         <placeName>Florence</placeName>
+         <location>
+            <geo>43°46'17"N, 11°15'15"E</geo>
+         </location>
+         <idno type="wikidata">Q2044</idno>
+     </place>
+     
+     <place xml:id="Gal_001">
+         <placeName>Grande Galerie</placeName>
+         <location>
+            <geo>48°51'36.81367"N, 2°20'1.92905"E</geo>
+         </location>
+         <idno type="wikidata">Q109405871</idno>
+     </place>
+     
+     <place xml:id="Ita_001">
+         <placeName>Italy</placeName>
+         <location>
+            <geo> </geo>
+         </location>
+         <idno type="wikidata">Q38</idno>
+     </place>
+     
+    <place xml:id="Lou_001">
+        <placeName>Musée du Louvre</placeName>
+        <location>
+           <geo>48°51'40"N, 2°20'9"E</geo>
+        </location>
+        <idno type="wikidata">Q19675</idno>
+    </place>
+    
+     <place xml:id="Lom_001">
+         <placeName>Lombardy</placeName>
+         <location>
+            <geo>45°39'N, 9°57'E</geo>
+         </location>
+         <idno type="wikidata">Q19675</idno>
+     </place>
+     
+     <place xml:id="Mod_001">
+         <placeName>Modena</placeName>
+         <location>
+            <geo>44°38'44.95"N, 10°55'32.59"E</geo>
+         </location>
+         <idno type="wikidata">Q279</idno>
+     </place>
+     
+    <place xml:id="Par_001">
+        <placeName>Paris</placeName>
+        <location>
+           <geo>48°51'24"N, 2°21'8"E</geo>
+        </location>
+        <idno type="wikidata">Q90</idno>
+    </place>
+     
+     <place xml:id="Par_002">
+         <placeName>Parma</placeName>
+         <location>
+           <geo>44°48'5.3"N, 10°19'40.8"E</geo>
+         </location>
+         <idno type="wikidata">Q2683</idno>
+     </place>
+    
+     <place xml:id="Pia_001">
+         <placeName>Piacenza</placeName>
+         <location>
+           <geo>45°3'N, 9°42'E</geo>
+         </location>
+         <idno type="wikidata">Q13329</idno>
+     </place>
+     
+     
+     <place xml:id="Rom_001">
+         <placeName>Rome</placeName>
+         <location>
+           <geo>41°53'35"N, 12°28'58"E</geo>
+         </location>
+         <idno type="wikidata">Q220</idno>
+     </place>
+     
+     <place xml:id="Tur_001">
+         <placeName>Turin</placeName>
+         <location>
+           <geo>45°4'45"N, 7°40'34"E</geo>
+         </location>
+         <idno type="wikidata">Q495</idno>
+     </place>
+    
+     <place xml:id="Ven_001">
+         <placeName>Venice</placeName>
+         <location>
+           <geo>445°26'23"N, 12°19'55"E</geo>
+         </location>
+         <idno type="wikidata">Q641</idno>
+     </place>
+     
+     <place xml:id="Ver_001">
+         <placeName>Verona</placeName>
+         <location>
+           <geo>45°26'19"N, 10°59'34"E</geo>
+         </location>
+         <idno type="wikidata">Q2028</idno>
+     </place>
+     
+</listPlace>

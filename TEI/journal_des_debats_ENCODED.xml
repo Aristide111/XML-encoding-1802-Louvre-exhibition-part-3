@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+   
+   <!DOCTYPE TEI [
+   
+    <!ENTITY listObject SYSTEM "index_object.xml"> 
+   
+    <!ENTITY listPlace SYSTEM "index_place.xml">
+    
+    <!ENTITY listPerson SYSTEM "index_person.xml">]>
+
+<?xml-model href="out/ODD_LOUVRE_EXHIBITION.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="out/ODD_LOUVRE_EXHIBITION.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Journal_des_debats_ENCODED</title>
+               <respStmt>
+                  <resp>transcription</resp>
+                  <resp>encoding</resp>
+                  <name>Aristide Curtelin</name>
+               </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <distributor>Aristide Curtelin</distributor>
+            <idno type="URI ">https://github.com/Aristide111</idno>
+            <availability status="free">
+               <p>Created in an academic context</p>
+            </availability>
+         </publicationStmt>
+         <sourceDesc>
+            <msDesc>
+               <msIdentifier>
+                  <country>France</country>
+                  <settlement>Paris</settlement>
+                  <repository>Bibliothèque Nationale de France</repository>
+                  <idno type="ark">ark:/12148/btv1b10527786q</idno>
+                  
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <title>Observations sur cette exposition. journal des debats 1802.</title>
+                  </msItem>
+               </msContents>
+               <physDesc> 
+                  <additions>
+                     <p>The first page of this manuscript contains numerical marginalia in the upper right corner :  746 and a illegible stamp mark at the center bottom. All the page have a pagination ( 1079 to 1106)</p>
+                  </additions>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <langUsage>
+            <language ident="fr">français</language>
+         </langUsage>
+         <textDesc n="newspaper article">
+            <channel mode="w"></channel>
+            <constitution type="frags" > extract </constitution>
+            <derivation> original </derivation>
+            <domain type="art"/>
+            <factuality>fact</factuality>
+            <interaction>none</interaction>
+            <preparedness>formulaic</preparedness>
+            <purpose type="persuade" degree="high"/>
+            <purpose type="inform" degree="medium"/>
+         </textDesc>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="title">
+            <l><pb n="1079"/> observations sur cette exposition. journal des debats 1802.<note type="marginalia"> 1079 </note> <note type="marginalia" > 746 </note> </l>
+         </div>
+         <div type ="article">
+            <p>
+               <s>cette collection, l'une des plus preciuses que le zele vraiment recommendable de  <persName ref="#Adm_001">l'administration du musée central</persName> ait encore offertes au public, se compose des morceaux les plus capitaux des derniers envois d'<placeName ref="#Ita_001">italie</placeName>, de quelques uns de ceux anterieurement arrivés dans un etat de delabrement, ou, plutot, pour me servir d'une expression qui me parait bien neuve, de maladie, qui ne permetait pas de les exposer au grand air, et enfin de plusieurs tableaux de l'ancienne collection, qui sont mieux eclairés <stamp> </stamp> et mieux vus la que dans la <placeName ref="#Gal_001">grande galerie</placeName> ;</s> 
+               <s>de ce nombre est la fameuse <objectName ref="#Twc_001">cene</objectName> dite <objectName ref="#Twc_001">les noces de cana</objectName> de <persName ref="#Ver_001">paul veronese</persName>, dont nous avons parlé dans un de nos precedens numeros et celle du <objectName ref="#Tfl_001">repas chés levi, le publicain</objectName> sur lequel nous nous promis de faire quelques observations. </s>  
+               <s>ce dernier tableau ne peut pas se comparer aux <objectName ref="#Twc_001">noces de 
+               pb n="1080/>  <note type="marginalia" > 1080</note> cana</objectName>, de <persName ref="#Ver_001">paul veronese</persName>, de (barré) pour le coloris, la multitude des figures, la hardiesse, je dirais volontiers la temerité de l'ordonnace;</s>
+               <s>ce n'est pas non plus la meme richesse d'accessoires ( l'architecture exceptée ) la meme magie d'ombres et de lumieres, la meme naiveté d'action ; je n'oserais dire cependant lequel des deux tableaux a du contribuer le plus a la gloire, sinon du pinceau  , du moins du genie de <persName ref="#Ver_001">paul veronese</persName>.</s> 
+            </p>
+         </div>
+      </body>
+   </text>
+   </TEI>
+   

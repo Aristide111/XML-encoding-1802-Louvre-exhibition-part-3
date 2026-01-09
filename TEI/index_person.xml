@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<listPerson>
+    
+    <person xml:id="Car_001">
+        <persName>Annibale Carracci</persName>
+        <idno type="wikidata">Q7824</idno>
+    </person>
+    
+    <person xml:id="Eyc_001">
+        <persName>Jan van Eyck</persName>
+        <idno type="wikidata">Q102272</idno>
+    </person>
+    
+    <person xml:id="Inf_001">
+        <persName>Institut de France </persName>
+        <idno type="wikidata">Q377066Q377066</idno>
+    </person>
+    
+    <place xml:id="Adm_001">
+        <persName>Administration of Musée du Louvre</persName>
+    </place>
+    
+    <person xml:id="Rap_001">
+        <persName>Raphael</persName>
+        <idno type="wikidata">Q5597</idno>
+    </person>
+    
+    <person xml:id="Rub_001">
+        <persName>Peter Paul Rubens</persName>
+        <idno type="wikidata">Q5599</idno>
+    </person>
+    
+    
+    <person xml:id="Sar_001">
+        <persName>Andrea del Sarto</persName>
+        <idno type="wikidata">Q5571</idno>
+    </person>
+    
+    <person xml:id="Tit_001">
+        <persName>Titian</persName>
+        <idno type="wikidata">Q47551</idno>
+    </person>
+    
+    <person xml:id="Ver_001">
+        <persName>Paolo Veronese</persName>
+        <idno type="wikidata">Q9440</idno>
+    </person>
+   
+</listPerson>

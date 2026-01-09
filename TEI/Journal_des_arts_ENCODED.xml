@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE TEI [
+   
+   <!ENTITY listObject SYSTEM "index_object.xml"> 
+   
+    <!ENTITY listPlace SYSTEM "index_place.xml">
+    
+    <!ENTITY listPerson SYSTEM "index_person.xml"> ]>
+    
+<?xml-model href="out/ODD_LOUVRE_EXHIBITION.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="out/ODD_LOUVRE_EXHIBITION.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Journal_des_arts_ENCODED</title>
+            <respStmt>
+               <resp>transcription</resp>
+               <resp>encoding</resp>
+               <name>Aristide Curtelin</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <distributor>Aristide Curtelin</distributor>
+            <idno type="URI ">https://github.com/Aristide111</idno>
+            <availability status="free">
+               <p>Created in an academic context</p>
+            </availability>
+         </publicationStmt>
+         <sourceDesc>
+            <msDesc>
+               <msIdentifier>
+                  <country>France</country>
+                  <settlement>Paris</settlement>
+                  <repository>Bibliothèque Nationale de France</repository>
+                  <idno type="ark">ark:/12148/btv1b10527779n</idno>
+                  
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <title>Observations sur cette exposition. journal des arts.</title>
+                  </msItem>
+               </msContents>
+               <physDesc> 
+                  <additions>
+                     <p>The first page of this manuscript contains numerical marginalia in the upper right corner : 745, and a illegible stamp mark at the center bottom. All the page have a pagination ( 1069 to 1078)</p>
+                  </additions>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <langUsage>
+            <language ident="fr">français</language>
+         </langUsage>
+         <textDesc n="newspaper article">
+            <channel mode="w"></channel>
+            <constitution type="frags" >extract</constitution>
+            <derivation>original</derivation>
+            <domain type="art"/>
+            <factuality>fact</factuality>
+            <interaction>none</interaction>
+            <preparedness>formulaic</preparedness>
+            <purpose type="persuade" degree="high"/>
+            <purpose type="inform" degree="medium"/>
+         </textDesc>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="title">
+            <l><pb n="1069"/>Observation sur cette exposition.<note type="marginalia" >1069</note> <note type="marginalia"> 745 </note> </l>
+         </div>
+         <div type ="article">
+            <p>
+               <s>La beauté et la magnificience des tableaux qui composent cette exposition, devraient necessairement eveiller la curiosité publique;</s> 
+               <s>aussi la foule s'y est elle portée , et l'amour des beaux arts, qui chaque jour acquiert plus de vigueur parmi nous, 
+               l'a emporté sur les obstacles que le tems deplorable semblait devoir lui opposer.</s> 
+               <s>on se rappelle qu'a mesure que <placeName ref="#Par_001">Paris</placeName> recevait dans ses murs ces immortels trophées de la valeur de nos guerriers, 
+              ces chefs d'oeuvres <note type="stamp"> </note> recueillis dans la <placeName ref="#Lom_001">lombardie</placeName> a <placeName ref="#Bol_001">bologne</placeName> 
+             <placeName ref="#Cen_001"> cento </placeName> </s>
+              <pb n="1070"/> <note type="marginalia" > 1070 </note> <s><placeName ref="#Mod_001"> modene</placeName>, <placeName ref="#Par_002">parme</placeName>, 
+             <placeName ref="#Pia_001">plaisance</placeName>, <placeName ref="#Rom_001">rome</placeName>, <placeName ref="#Ven_001">venise</placeName>, <placeName ref="#Ver_001"> 
+             verone </placeName> <placeName ref="#Flo_001">florence</placeName>, <placeName ref="#Tur_001">turin</placeName> et  <persName ref="#Adm_001">l'administration du musée
+             </persName> s'empressa d'en faire jouir le public, et les expose successivement tels qu'ils étaient parvenus;</s> 
+               <s>mais [marginalia : d'aussi] le nombre meme des tableaux recus, il s'en trouve plusieurs dans un etat de deperissement tellement allarmant, 
+              que l'on ne pouvait, sans imprudence, et sans consommer leur ruine totale, tenter de les mettre en place. tels etaient entre autres, 
+              les tableaux de <persName ref="#Rap_001">raphael</persName>, venus de <placeName ref="#Fol_001">foligno</placeName>, et le beau tableau du 
+             <persName ref="#Tit">Titien</persName>, connu sous le nom de <objectName ref="#Msp_001">Saint pierre Dominicain</objectName>. </s>
+               
+            </p>
+         </div>
+      </body>
+   </text>
+</TEI>

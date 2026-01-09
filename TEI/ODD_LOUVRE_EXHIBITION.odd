@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en"
+   xmlns:sch="http://purl.oclc.org/dsdl/schematron" >
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title type="short">Louvre exhibition project </title>
+            <title>Louvre exhibition project</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Published</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Derived from ODDbyexeample, write by Katarzyna Anna Kapitan </p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <head>The louvre exhibition</head>
+         
+         <p>During the Second French War against Italy, which took place between 1799 and 1801, 
+               the French army seized numerous Italian works of art. In 1802, the Louvre Museum organized an art exhibition showcasing the most significant pieces acquired during this campaign. 
+               The exhibition quickly gained widespread popularity and provoked a variety of reactions in the contemporary press. Many of these press reviews are now archived at 
+               the Bibliothèque nationale de France (BnF).
+               
+               Our project involves analyzing and encoding three selected reviews : "Journal du Publiciste", "Journal des Débats", and "Journal des Arts" 
+               based on their themes and content.
+               The goal of this project is to identify the different works of art that were shown at this event. 
+               
+               To do this, we have created three rules in our ODD:
+               
+               
+               - We have added a list of metadata for <gi>msIdentifier</gi> to give more details about the specific copies of the journal extracts we are using.
+            - We have made it mandatory to add a Wikidata ID idno to the name of each artist in <gi>persName</gi>. 
+            - We have added an <gi>objectName</gi> element with a type attribute to describe the nature of each artwork more precisely.  </p>
+            
+         <schemaSpec ident="The_louvre_exhibition_modification" start="TEI ">
+            <moduleRef key="tei"/>
+            <!--Checking module textcrit-->
+            <classRef key="att.textCritical"/>
+            <classRef key="model.rdgLike"/>
+            <classRef key="model.rdgPart"/>
+            <classSpec ident="att.textCritical" type="atts" mode="change">
+               <attList>
+                  <attDef ident="type" mode="delete"/>
+                  <attDef ident="cause" mode="delete"/>
+                  <attDef ident="varSeq" mode="delete"/>
+                  <attDef ident="require" mode="delete"/>
+               </attList>
+            </classSpec>
+            <!--Checking module msdescription-->
+            <classRef key="model.physDescPart"/>
+            <moduleRef key="msdescription"
+                       include="msDesc stamp msIdentifier repository msContents msItem physDesc additions"/>
+            <elementSpec ident="msDesc" mode="change">
+               <attList>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="stamp" mode="change">
+               <attList>
+                  <attDef ident="when" mode="delete"/>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="repository" mode="change">
+               <attList>
+                  <attDef ident="ref" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="msIdentifier" mode="change">
+               <desc > [Note Change!] We have modified <gi>msIdentifier</gi> to create a list of information that helps identify each manuscript exemplar. 
+                  We set maxOccurs="10" in the physical location cases 
+                     like country, settlement, repository and departement because a manuscript can move locations.
+                     But for idno we use 0 in case we do not have this information for the manuscript, but 1 because we can only have one. </desc>
+               
+               <content>
+                  <sequence>
+                     <elementRef key="country" minOccurs="0" maxOccurs="10"/>
+                     <elementRef key="settlement" minOccurs="0" maxOccurs="10"/>
+                     <elementRef key="repository" minOccurs="0" maxOccurs="10"/>
+                     <elementRef key="departement" minOccurs="0" maxOccurs="10"/>
+                     <elementRef key="idno" minOccurs="0" maxOccurs="1"/>
+                  </sequence>
+               </content>
+               <exemplum>
+               <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                  <msIdentifier>
+                     <msIdentifier>
+                        <country>France</country>
+                        <settlement>Paris</settlement>
+                        <repository>Bibliothèque Nationale de France</repository>
+                        <departement>Manuscrits</departement>
+                        <idno type="ark">ark:/12148/btv1b10527786q</idno>
+                     </msIdentifier>
+                  </msIdentifier>
+               </egXML>
+               </exemplum>
+            </elementSpec>          
+            <!--Checking module namesdates-->
+            <classRef key="model.persNamePart"/>
+            <moduleRef key="namesdates"
+                       include="persName placeName country settlement objectName"/>
+             <elementSpec ident="persName" mode="change">
+                <desc> [Note Change!] We added a rule to check if the painter’s Wikidata ID is present. If this information is missing, the document don't validate
+                and we have add on the error text the link to wikidata.</desc>
+               <constraintSpec ident="author" mode="add"
+                  scheme="schematron">
+                     <constraint>
+                        <sch:rule context="tei:persName">
+                           <sch:report test="not(@ref)" role="error">
+                              You need to add a ref for the painter. Find it on wikidata : (https://www.wikidata.org/wiki/Wikidata:Main_Page).
+                           </sch:report>
+                        </sch:rule>
+                     </constraint>
+               </constraintSpec>
+               <attList>
+                  <attDef ident="when" mode="delete"/>
+                  <attDef ident="full" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="yes"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+                <exemplum>
+                  <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                    <persName ref="#Ver_001">Paul Veronese</persName>
+                  </egXML>
+                </exemplum>
+            </elementSpec>
+            <elementSpec ident="placeName" mode="change">
+               <attList>
+                  <attDef ident="when" mode="delete"/>
+                  <attDef ident="full" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="yes"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="country" mode="change">
+               <attList>
+                  <attDef ident="when" mode="delete"/>
+                  <attDef ident="ref" mode="delete"/>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="settlement" mode="change">
+               <attList>
+                  <attDef ident="when" mode="delete"/>
+                  <attDef ident="ref" mode="delete"/>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="objectName" mode="change">
+               <desc> [Not Change!] We changed the "type" attribute of the <gi>objectName</gi> element to add more precision about the nature of artwork. 
+                  We chose to let the list of type open if we need to add another type later </desc>
+               <attList>
+                   <attDef ident="when" mode="delete"/>
+                  <attDef ident="full" mode="change">
+                     <valList mode="add" type="open">
+                        <valItem ident="yes"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="type" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="painting"/>
+                        <valItem ident="sculpture"/>
+                        <valItem ident="engraving"/>
+                        <valItem ident="book"/>
+                     </valList>
+                  </attDef>
+               </attList>
+               <exemplum>
+                  <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                     <objectName type="painting" ref="#Twc_001">les noces de cana</objectName>
+                  </egXML>
+               </exemplum>
+            </elementSpec>
+            <!--Checking module dictionaries-->
+            <classRef key="att.lexicographic"/>
+            <classRef key="model.entryLike"/>
+            <classRef key="model.formPart"/>
+            <classRef key="model.gramPart"/>
+            <classRef key="model.lexicalRefinement"/>
+            <classRef key="model.morphLike"/>
+            <classRef key="model.ptrLike.form"/>
+            <classSpec ident="att.lexicographic" type="atts" mode="change">
+               <attList>
+                  <attDef ident="expand" mode="delete"/>
+                  <attDef ident="split" mode="delete"/>
+                  <attDef ident="value" mode="delete"/>
+                  <attDef ident="location" mode="delete"/>
+                  <attDef ident="mergedIn" mode="delete"/>
+                  <attDef ident="opt" mode="delete"/>
+               </attList>
+            </classSpec>
+            <!--Checking module tagdocs-->
+            <classRef key="att.combinable"/>
+            <classRef key="att.identified"/>
+            <classRef key="model.contentPart"/>
+            <classSpec ident="att.combinable" type="atts" mode="change">
+               <attList>
+                  <attDef ident="mode" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.identified" type="atts" mode="change">
+               <attList>
+                  <attDef ident="ident" mode="delete"/>
+                  <attDef ident="predeclare" mode="delete"/>
+                  <attDef ident="module" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.anchoring" type="atts" mode="change">
+               <attList>
+                  <attDef ident="targetEnd" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.canonical" type="atts" mode="change">
+               <attList>
+                  <attDef ident="key" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.datable.w3c" type="atts" mode="change">
+               <attList>
+                  <attDef ident="notBefore" mode="delete"/>
+                  <attDef ident="notAfter" mode="delete"/>
+                  <attDef ident="from" mode="delete"/>
+                  <attDef ident="to" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.editLike" type="atts" mode="change">
+               <attList>
+                  <attDef ident="evidence" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.typed" type="atts" mode="change">
+               <attList>
+                  <attDef ident="subtype" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.ascribed.directed" type="atts" mode="change">
+               <attList>
+                  <attDef ident="toWhom" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.datable" type="atts" mode="change">
+               <attList>
+                  <attDef ident="period" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.dimensions" type="atts" mode="change">
+               <attList>
+                  <attDef ident="unit" mode="delete"/>
+                  <attDef ident="quantity" mode="delete"/>
+                  <attDef ident="extent" mode="delete"/>
+                  <attDef ident="precision" mode="delete"/>
+                  <attDef ident="scope" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.handFeatures" type="atts" mode="change">
+               <attList>
+                  <attDef ident="scribe" mode="delete"/>
+                  <attDef ident="scribeRef" mode="delete"/>
+                  <attDef ident="script" mode="delete"/>
+                  <attDef ident="scriptRef" mode="delete"/>
+                  <attDef ident="medium" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.media" type="atts" mode="change">
+               <attList>
+                  <attDef ident="width" mode="delete"/>
+                  <attDef ident="height" mode="delete"/>
+                  <attDef ident="scale" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.naming" type="atts" mode="change">
+               <attList>
+                  <attDef ident="role" mode="delete"/>
+                  <attDef ident="nymRef" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.pointing.group" type="atts" mode="change">
+               <attList>
+                  <attDef ident="domains" mode="delete"/>
+                  <attDef ident="targFunc" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.segLike" type="atts" mode="change">
+               <attList>
+                  <attDef ident="function" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.transcriptional" type="atts" mode="change">
+               <attList>
+                  <attDef ident="status" mode="delete"/>
+                  <attDef ident="cause" mode="delete"/>
+                  <attDef ident="seq" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.damaged" type="atts" mode="change">
+               <attList>
+                  <attDef ident="agent" mode="delete"/>
+                  <attDef ident="degree" mode="delete"/>
+                  <attDef ident="group" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.timed" type="atts" mode="change">
+               <attList>
+                  <attDef ident="start" mode="delete"/>
+                  <attDef ident="end" mode="delete"/>
+               </attList>
+            </classSpec>
+            <classSpec ident="att.personal" type="atts" mode="change">
+               <attList>
+                  <attDef ident="sort" mode="delete"/>
+               </attList>
+            </classSpec>
+            <!--Checking module core-->
+            <!-- We use AI here because the initial automated ODD generation from our XML file does not recognize the element. -->
+            <moduleRef key="core" include="p name date note pb respStmt resp title l"/>
+            <elementSpec ident="p" mode="change">
+               <content>
+                  <alternate minOccurs="0" maxOccurs="unbounded">
+                     <elementRef key="s"/>
+                     <elementRef key="country"/>
+                     <elementRef key="date"/>
+                     <elementRef key="idno"/>
+                     <elementRef key="l"/>
+                     <elementRef key="msDesc"/>
+                     <elementRef key="name"/>
+                     <elementRef key="note"/>
+                     <elementRef key="objectName"/>
+                     <elementRef key="pb"/>
+                     <elementRef key="persName"/>
+                     <elementRef key="placeName"/>
+                     <elementRef key="settlement"/>
+                     <elementRef key="stamp"/>
+                     <elementRef key="title"/>
+                     <textNode/>
+                  </alternate>
+               </content>
+               <attList>
+                  <attDef ident="part" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="N"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="s" mode="add">
+                     <datatype>
+                     <dataRef key="teidata.text" /> 
+                     </datatype>
+                  </attDef>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="name" mode="change">
+               <attList>
+                  <attDef ident="when" mode="delete"/>
+                  <attDef ident="full" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="yes"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="ref" mode="delete"/>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="date" mode="change">
+               <attList>
+                  <attDef ident="ref" mode="delete"/>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="note" mode="change">
+               <attList>
+                  <attDef ident="type" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="marginalia"/>
+                        <valItem ident="stamp"/>
+                     </valList>
+                  </attDef>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="pb" mode="change">
+               <attList>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="respStmt" mode="change">
+               <attList>
+                  <attDef ident="ref" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="resp" mode="change">
+               <attList>
+                  <attDef ident="ref" mode="delete"/>
+                  <attDef ident="when" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="title" mode="change">
+               <attList>
+                  <attDef ident="level" mode="delete"/>
+                  <attDef ident="type" mode="delete"/>
+                  <attDef ident="ref" mode="delete"/>
+                  <attDef ident="when" mode="delete"/>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="l" mode="change">
+               <attList>
+                  <attDef ident="part" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="N"/>
+                     </valList>
+                  </attDef>
+               </attList>
+            </elementSpec>
+            <!--Checking module figures-->
+            <!--Checking module header-->
+            <moduleRef key="header"
+                       include="teiHeader fileDesc titleStmt publicationStmt distributor idno availability sourceDesc profileDesc langUsage language"/>
+            <elementSpec ident="distributor" mode="change">
+               <attList>
+                  <attDef ident="ref" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="idno" mode="change">
+               <attList>
+                  <attDef ident="type" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident=""/>
+                        <valItem ident="URI"/>
+                        <valItem ident="ark"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="when" mode="delete"/>
+                  <attDef ident="type" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident=""/>
+                        <valItem ident="URI"/>
+                        <valItem ident="ark"/>
+                     </valList>
+                  </attDef>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="availability" mode="change">
+               <attList>
+                  <attDef ident="status" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="free"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="default" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="false"/>
+                     </valList>
+                  </attDef>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="sourceDesc" mode="change">
+               <attList>
+                  <attDef ident="default" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="false"/>
+                     </valList>
+                  </attDef>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="langUsage" mode="change">
+               <attList>
+                  <attDef ident="default" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="false"/>
+                     </valList>
+                  </attDef>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="language" mode="change">
+               <attList>
+                  <attDef ident="usage" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <!--Checking module gaiji-->
+            <classRef key="att.gaijiProp"/>
+            <classSpec ident="att.gaijiProp" type="atts" mode="change">
+               <attList>
+                  <attDef ident="name" mode="delete"/>
+                  <attDef ident="value" mode="delete"/>
+                  <attDef ident="version" mode="delete"/>
+                  <attDef ident="scheme" mode="delete"/>
+               </attList>
+            </classSpec>
+            <!--Checking module verse-->
+            <!--Checking module transcr-->
+            <!--Checking module linking-->
+            <!--Checking module analysis-->
+            <!--Checking module analysis-->
+            <!-- We used AI here too for the same reason -->
+            <moduleRef key="analysis" include="s"/> 
+            <classRef key="att.linguistic"/>
+            <elementSpec ident="s" mode="change"> 
+               <attList>
+                  <attDef ident="part" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="N"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <classSpec ident="att.linguistic" type="atts" mode="change">
+               <attList>
+                  <attDef ident="lemma" mode="delete"/>
+                  <attDef ident="lemmaRef" mode="delete"/>
+                  <attDef ident="pos" mode="delete"/>
+                  <attDef ident="msd" mode="delete"/>
+                  <attDef ident="join" mode="delete"/>
+               </attList>
+            </classSpec>
+            <!--Checking module textstructure-->
+            <moduleRef key="textstructure" include="TEI text body div"/>
+            <elementSpec ident="TEI" mode="change">
+               <attList>
+                  <attDef ident="version" mode="delete"/>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="text" mode="change">
+               <attList>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="div" mode="change">
+               <attList>
+                  <attDef ident="org" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="uniform"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="sample" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="complete"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="part" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="N"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="type" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="article"/>
+                        <valItem ident="title"/>
+                     </valList>
+                  </attDef>
+               </attList>
+            </elementSpec>
+            <!--Checking module corpus-->
+            <moduleRef key="corpus"
+                       include="textDesc channel constitution derivation domain factuality interaction preparedness purpose"/>
+            <elementSpec ident="textDesc" mode="change">
+               <attList>
+                  <attDef ident="default" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="false"/>
+                     </valList>
+                  </attDef>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="channel" mode="change">
+               <attList>
+                  <attDef ident="mode" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="w"/>
+                     </valList>
+                  </attDef>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="constitution" mode="change">
+               <attList>
+                  <attDef ident="type" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="frags"/>
+                        <valItem ident="single"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="type" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="frags"/>
+                        <valItem ident="single"/>
+                     </valList>
+                  </attDef>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="derivation" mode="change">
+               <attList>
+                  <attDef ident="type" mode="delete"/>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="domain" mode="change">
+               <attList>
+                  <attDef ident="type" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="art"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="type" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="art"/>
+                     </valList>
+                  </attDef>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="factuality" mode="change">
+               <attList>
+                  <attDef ident="type" mode="delete"/>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="interaction" mode="change">
+               <attList>
+                  <attDef ident="type" mode="delete"/>
+                  <attDef ident="active" mode="delete"/>
+                  <attDef ident="passive" mode="delete"/>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="preparedness" mode="change">
+               <attList>
+                  <attDef ident="type" mode="delete"/>
+                  <attDef ident="type" mode="delete"/>
+               </attList>
+            </elementSpec>
+            <elementSpec ident="purpose" mode="change">
+               <attList>
+                  <attDef ident="type" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="inform"/>
+                        <valItem ident="persuade"/>
+                     </valList>
+                  </attDef>
+                  <attDef ident="type" mode="change">
+                     <valList mode="add" type="closed">
+                        <valItem ident="inform"/>
+                        <valItem ident="persuade"/>
+                     </valList>
+                  </attDef>
+               </attList>
+            </elementSpec>
+         </schemaSpec>
+      </body>
+   </text>
+</TEI>

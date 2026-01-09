@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<listObject>
+    
+    <object xml:id="Tfl_001">
+        <objectIdentifier>
+            <objectName>The Feast in the House of Levi</objectName>
+            <author>Paolo Veronese</author>
+            <date>1573</date>
+            <idno type="wikidata">Q951105</idno>
+            <country>Italy</country>
+            <settlement>Venice</settlement>
+            <institution>Gallerie dell'Accademia</institution>
+            <history>
+                <acquisition>returned in 1815 </acquisition>
+            </history>
+        </objectIdentifier>
+    </object>
+    
+    <object xml:id="Mof_001">
+        <objectIdentifier>
+            <objectName>Madonna of Foligno </objectName>
+            <author>Raphael</author>
+            <date>1511</date>
+            <idno type="wikidata">Q2610709</idno>
+            <country>Vatican</country>
+            <settlement>Vatican</settlement>
+            <institution>Pinacoteca vaticana</institution>
+            <history>
+                <acquisition>returned in 1815 </acquisition>
+            </history>
+        </objectIdentifier>
+    </object>
+    
+    <object xml:id="Msp_001">
+        <objectIdentifier>
+            <objectName>Le Martyre de saint Pierre dominicain</objectName>
+            <author>Titien</author>
+            <p>Returned in 1815 to the Basilica dei Santi Giovanni e Paolo in Venice, the painting was completely destroyed by the fire on 16 August 1867.</p>
+        </objectIdentifier>
+    </object>
+    
+    <object xml:id="Twc_001">
+        <objectIdentifier>
+            <objectName>The Wedding at Cana</objectName>
+            <author>Paolo Veronese</author>
+            <date>1562</date>
+            <idno type="wikidata">Q185255</idno>
+            <country>France</country>
+            <settlement>Paris</settlement>
+            <institution>Musée du Louvre</institution>
+            <history>
+                <acquisition> French spoils of war </acquisition>
+            </history>
+        </objectIdentifier>
+    </object>
+    
+</listObject>
